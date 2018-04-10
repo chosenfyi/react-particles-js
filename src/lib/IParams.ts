@@ -54,6 +54,7 @@ export interface IParams{
     color: {
       value: any;
     };
+    lifetime: number;
     shape: {
       type: string | string[];
       stroke: {

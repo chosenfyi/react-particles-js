@@ -28,6 +28,8 @@ export default class ParticleManager{
     let {canvas, interact, modes} = this.library;
 
     this.params.particles.array.forEach( ( particle: Particle, i: number ) => {
+      particle.lifetime--;
+
       if( this.params.particles.move.enable ){
         let ms = this.params.particles.move.speed / 2;
         particle.x += particle.vx * ms;
@@ -146,6 +148,9 @@ export default class ParticleManager{
         }
       }
     });
+
+    this.params.particles.array = this.params.particles.array.filter(p => 
+      p.lifetime)
   }
 
   particlesDraw(): void{

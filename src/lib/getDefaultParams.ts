@@ -10,6 +10,7 @@ export const getDefaultParams: () => IParams =
           value_area: 1200
         }
       },
+      lifetime: Infinity,
       color: {
         value: '#FFF'
       },

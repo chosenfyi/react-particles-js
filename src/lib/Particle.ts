@@ -13,6 +13,7 @@ export default class Particle{
   x: number;
   y: number;
 
+  lifetime: number;
   color: any;
 
   opacity: number;
@@ -32,6 +33,7 @@ export default class Particle{
 
   constructor( params: IParams, library: ParticlesLibrary, color?: any, opacity?: any, position?: { x: number; y: number; }){
     this.params = params;
+    this.lifetime = params.particles.lifetime;
     this.library = library;
     this.setupSize();
     this.setupPosition( position );
@@ -125,9 +127,10 @@ export default class Particle{
     if( this.params.particles.move.straight ){
       this.vx = velbase.x;
       this.vy = velbase.y;
-      if( this.params.particles.move.random ){
-        this.vx = this.vx * ( Math.random() );
-        this.vy = this.vy * ( Math.random() );
+      if( this.params.particles.move.random ) {
+        const lag = this.getLag()
+        this.vx = this.vx * ( Math.random() ) * lag;
+        this.vy = this.vy * ( Math.random() ) * lag;
       }
     }else{
       this.vx = velbase.x + Math.random() - 0.5;
@@ -165,6 +168,10 @@ export default class Particle{
     }
   }
 
+  public getLag(): number {
+      return this.lifetime / this.params.particles.lifetime
+  }
+
   public draw(): void{
 
     let {canvas, tmp, vendors} = this.library;
@@ -183,6 +190,8 @@ export default class Particle{
     }else{
       opacity = this.opacity;
     }
+
+    opacity *= this.getLag()
 
     let color_value: string;
     if( this.color.rgb ){

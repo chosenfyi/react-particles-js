@@ -1,6 +1,6 @@
 import Interact from './Interact';
 import Modes from './Modes';
-import Particle from './Particle';
+import Particle from './Particle'
 import ParticleManager from './ParticleManager';
 import ParticlesLibrary from './ParticlesLibrary';
 import Vendors from './Vendors';
