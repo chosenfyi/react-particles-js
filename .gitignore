@@ -49,5 +49,3 @@ lib/particles.js.map
 # Visual Studio Code
 .vscode
 /.idea
-
-/lib
