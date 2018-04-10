@@ -10,10 +10,10 @@ export * from './IParams';
 export * from './Utils';
 
 export {
-	Interact,
-	Modes,
-	Particle,
-	ParticleManager,
-	ParticlesLibrary,
-	Vendors
+  Interact,
+  Modes,
+  Particle,
+  ParticleManager,
+  ParticlesLibrary,
+  Vendors
 };

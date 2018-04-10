@@ -16,6 +16,7 @@ export type IParticlesParams = {
                 value_area?: number;
             };
         };
+        lifetime?: number;
         color?: {
             value: string;
         };
